@@ -1,0 +1,104 @@
+{% extends 'airline/base.html' %}
+{% load static %}
+
+
+
+
+
+
+
+
+{% block content %}
+<!-- HERO SECTION -->
+<section class="other-pages-hero-section container-fluid">
+  <div class="other-pages-hero-overlay"></div>
+  <div class="other-pages-hero-container container">
+
+    <div class="other-pages-hero-box">
+        <h4>Complete Booking.</h1>
+
+    </div>
+
+  </div>
+</section>
+<!-- HERO SECTION -->
+
+
+
+
+<div class="container my-5">
+        
+    <div class="row">
+        <div class="col-lg-12">
+                    
+            <div class="box-element">
+                <a  class="btn btn-outline-dark" href="{% url 'airline' %}">&#x2190; Search Available Flight</a>
+                <br>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th><h5>Seats Booked: <strong>{{ cartIconShowQuantity }}</strong></h5></th>
+                        <th><h5>Total Cost:<strong> {{total_converted_order_cost|floatformat:2}} {{currency_code}}</strong></h5></th>
+                        <th>
+                            <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+            <br>
+            <hr>
+
+
+
+
+
+
+
+                    
+            <div class="box-element">
+                <div class="cart-row">
+                    <div style="flex:2"></div>
+                    <div style="flex:2"><strong>Airline</strong></div>
+                    <div style="flex:1"><strong>Ticket Price</strong></div>
+                    <div style="flex:1"><strong>Seats</strong></div>
+                    <div style="flex:1"><strong>Total</strong></div>
+                </div>
+                
+
+                {% for item in cartitem_price_converted_context %}
+                    {% with cartitem=item.cartitem converted_price=item.converted_price total_converted_price=item.total_converted_price currency_code=item.currency_code %}
+                    
+
+                        <div class="cart-row">
+                            <div style="flex:2"><img class="row-image" src="{{cartitem.airline.imageUrl}}"></div>
+                            <div style="flex:2"><p>{{cartitem.airline.name}}</p></div>
+                            <div style="flex:1"><p>{{converted_price|floatformat:2}} {{currency_code}}</p></div>
+                            <div style="flex:1">
+                                <p class="quantity">{{cartitem.quantity}}</p>
+                                <div class="quantity">
+                                    <img data-product="{{cartitem.airline.id}}" data-action="add-to-cart" class="chg-quantity action-btn-clicked" src="{% static 'images/arrow-up.png' %}">
+                                    <img data-product="{{cartitem.airline.id}}" data-action="remove-from-cart" class="chg-quantity action-btn-clicked" src="{% static 'images/arrow-down.png' %}">
+                                </div>
+                            </div>
+                            <div style="flex:1"><p>{{total_converted_price|floatformat:2}} {{currency_code}}</p></div>
+                        </div>
+
+                    {% endwith %}
+                {% endfor %}
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

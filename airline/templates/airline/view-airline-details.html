@@ -1,0 +1,164 @@
+
+{% extends 'airline/base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<div class="container all-airline-view-container">
+    <div class="row">
+        <div class="col-lg-12 view-airline-image">
+
+            <div class="airline-image">
+                <img src=" {{view_airline_context.imageUrl}}"  class="img-fluid" alt="">
+                 <p>Our Official {{ view_airline_context.name }} Airline</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="row view-airline-details">
+
+
+        <div class="col-lg-6">
+            <div class="airline-details">
+
+                <h3><strong>{{ view_airline_context.name }} </strong> Airline</h1>
+                <p><strong> Ticket Price:</strong><span class="text-success"> {{ view_airline_converted_price_context|floatformat:2 }} {{ currency_code }}</span></p>
+                <p><strong> Takeoff Date:</strong> {{ view_airline_context.takeoff_date }}</p>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="airline-more-details">
+                <h3><strong>Origin:</strong> {{ view_airline_context.origin_city }}</h3>
+                <p><strong>Destination:</strong> {{ view_airline_context.destination_city }}</p>
+                <!-- to use JAVASCRIPT TO PASS ADD TO CART , WE SET THE (1) data-product ="" (2) data-action = ""  -->
+                <!-- the two data attributes would pass data needed by our javascript to perform add to cart -->
+                 <!-- dont forget to add a class to your button, this would be used to listen for event, / AddEventListener -->
+               <a data-product="{{view_airline_context.id}}" data-action="add-to-cart" class="btn btn-outline-success action-btn-clicked">Book Flight</a>
+               
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row d-flex justify-content-center my-4">
+        <div class="marquee w-50 bg-success p-2" style="border-radius: 10px;">
+            <marquee behavior="scroll" direction="left" class="text-light"><span class="text-danger">Please Note</span> : Take Off Date Is {{ view_airline_context.takeoff_date }} </marquee>
+        </div>
+
+        <div class="other-airline-details">
+            <p>Seats Used: {{ view_airline_context.seats_used }}</p>
+            <p>Capacity: {{ view_airline_context.capacity }}</p>
+            <p>Available Seats: {{ view_airline_context.available_seats }}</p>
+            <p>Take Off: {{ view_airline_context.takeoff }}</p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+<!-- Create a div to hold the map -->
+<div class="container">
+    <div id="map"></div>
+</div>
+
+    
+<style>
+    #map { 
+        height: 380px; 
+        width: 100%;
+    }
+</style>
+
+
+    <!-- Display weather information -->
+     <div class="container mt-5">
+        <div class="weather-info">
+            <h4>Weather in {{ view_airline_context.destination_city }}</h4>
+            <p>Temperature: {{ weather_info.temperature }}°C</p>
+            <p>Pressure: {{ weather_info.pressure }} hPa</p>
+            <p>Wind Speed: {{ weather_info.wind_speed }} m/s</p>
+            <p>Cloudiness: {{ weather_info.cloudiness }}%</p>
+            <p>Global Precipitation: {{ weather_info.global_precipitation }} mm</p>
+            <p>Description: {{ weather_info.description }}</p>
+        </div>
+     </div>
+    
+
+    <!-- Display Wikipedia summary -->
+     <div class="container">
+        <div class="wikipedia-summary">
+            <h4>About {{ view_airline_context.destination_city }}</h4>
+            <p><strong>Summary:</strong> {{ wikipedia_details.summary }}</p>
+            <p><strong>Details:</strong> {{ wikipedia_details.full_text }}</p>
+            <a href="{{ wikipedia_details.url }}" target="_blank">Read more on Wikipedia</a>
+            <style>
+                .wikipedia-summary{ line-height: 30px; }
+            </style>
+        </div>
+     </div>
+    
+
+
+
+
+<!-- Include Leaflet JavaScript library -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+ <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+    
+    <!-- <script src="{% static 'js/map.js' %}"></script> -->
+
+
+    <!-- Your custom JavaScript -->
+    <!-- JavaScript to handle map rendering -->
+    <script>
+        // Parse the JSON strings from the template's VIEW.PY into JavaScript arrays
+        var originCoords = JSON.parse('{{ origin_coords_json|escapejs }}');
+        var destinationCoords = JSON.parse('{{ destination_coords_json|escapejs }}');
+
+        // Initialize the map and set the view to the origin coordinates
+        // This is Where we want to see first on the map
+        var map = L.map('map').setView(originCoords, 4);
+
+        // Add tile layer to the map
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Add markers for origin and destination
+        L.marker(originCoords).addTo(map).bindPopup('Origin: {{ view_airline_context.origin_city }}').openPopup();
+        L.marker(destinationCoords).addTo(map).bindPopup('Destination: {{ view_airline_context.destination_city }}');
+
+        // Draw a line connecting the origin and destination markers
+        L.polyline([originCoords, destinationCoords], { color: 'blue' }).addTo(map);
+    </script>
+
+
+
+
+{% endblock %}
+
+

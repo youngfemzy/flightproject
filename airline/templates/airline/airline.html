@@ -1,0 +1,152 @@
+{% extends 'airline/base.html' %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+
+
+
+
+
+
+{% block content %}
+<!-- HERO SECTION -->
+<section class="hero2 hero-section container-fluid">
+  <div class="hero-overlay"></div>
+  <div class="hero-container container">
+    <h4>Find Nice Flight Deals.</h1>
+
+    <div class="airline-hero-search">
+        
+        <form action="" class="airline-hero-form" method="get" >
+            <div class="inline-form">
+                {{myairlineFilterContext.form|crispy}}
+
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Search Flight</button>
+        </form>
+
+    </div>
+
+    
+    <div class="hero-other">
+      <div class="hero-my-booking">
+          <a href="{% url 'user-details' %}"><i class="fa fa-cog fa-spin"></i></i> My Account</a>
+      </div>
+      <hr>
+      <div class="hero-my-profile">
+          <a href="{% url 'booked-flights' %}"><i class="fa fa-plane fa-pulse"></i></i> Booked Flights</a>
+      </div>
+
+    </div>
+
+    
+
+  </div>
+
+
+</section>
+<!-- HERO SECTION -->
+
+
+
+
+<div class="container mt-5">
+
+    <div class="row">
+        {% for item in airplanes_with_converted_prices %}
+        {% with eachairplane=item.airplane converted_price=item.converted_price currency_code=item.currency_code %}
+    
+        <!-- EACH PRODUCT CARD STARTS HERE -->
+        <div class="product-card">
+    
+            <!-- Image Section -->
+            <div class="product-card-image">
+                <img src="{{ eachairplane.imageUrl }}" alt="{{ eachairplane.name }}">
+            </div>
+    
+            <!-- Info Section -->
+            <div class="product-card-info">
+    
+                <!-- Top Info -->
+                <div class="product-card-top">
+                    <h6><strong>{{ eachairplane.name }}</strong></h6>
+                    <h6><strong>{{ eachairplane.takeoff_date }}</strong></h6>
+                    <h6><strong> Ticket Price & Seats: <span class="text-success">{{ converted_price|floatformat:0 }} {{ currency_code }} - {{ eachairplane.available_seats }}</span></strong></h6>
+                </div>
+                <hr>
+    
+                <!-- Details Section -->
+                <div class="product-card-details">
+    
+                    <!-- Destination Info -->
+                    <div class="product-card-destination">
+                        <h6><strong>Origin:</strong> {{ eachairplane.origin_city }}</h6>
+                        <h6><strong>Destination:</strong> {{ eachairplane.destination_city }}</h6>
+                    </div>
+    
+                    <!-- Buttons Section -->
+                    <div class="product-card-buttons">
+                        
+                        <!-- {% if not user.is_authenticated %} -->
+                        <!-- <a href="{% url 'login' %}">Login To Continue</a> -->
+                        <!-- {% endif %} -->
+                         
+                        <!-- Button to Add to Cart -->
+                        <a data-product="{{ eachairplane.id }}" data-action="add-to-cart" class="btn btn-outline-success action-btn-clicked">Book Flight</a>
+                        
+                        <!-- Button to View Flight Details -->
+                        <a href="{% url 'view-airline-details' eachairplane.id %}" class="btn btn-outline-warning">View Flight Detail</a>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <!-- EACH PRODUCT CARD ENDS HERE -->
+    
+        {% endwith %}
+    {% endfor %}
+    
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<style>
+    .inline-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inline-form label {
+        margin-right: 5px;
+    }
+
+    .inline-form .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .inline-form .form-group input,
+    .inline-form .form-group select {
+        margin-top: 5px;
+    }
+
+    .inline-form button {
+        align-self: flex-end;
+    }
+</style>
+
+{% endblock %}

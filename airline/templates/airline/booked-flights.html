@@ -1,0 +1,176 @@
+{% extends 'airline/base.html' %}
+{% load static %}
+
+
+
+
+
+
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+
+  <!-- IF USER IS JUST A NORMAL USER , SHOW ALL BOOKED FLIGHTS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  {% if user.is_staff %}
+    
+    <div class="booked-flight-page-1 container-fluid">
+      <div class="booked-flight-page-overlay"></div>
+
+      <div class="booked-flight-page-1-content">
+        <div class="completer-order-container container">
+    
+            
+            <!-- TABLE TO DISPLAY ORDER -->
+              <div class="table-responsive my-tab-table-div">
+                <table class="table table-striped ">
+                <thead>
+                  <tr>
+    
+                    <th scope="col">Transaction Id</th>
+                    <th scope="col">Customer</th>
+                    <!-- <th scope="col">Transaction Number</th> -->
+                    <th scope="col">Status</th>
+                    <th scope="col">Total Bill</th>
+                    <th scope="col">Total Seats Booked</th>
+                    <th scope="col">Action</th>
+    
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                <!-- Loop through each completed order in the dictionary -->
+                {% for eachcompletedorder in orders_with_converted_billsContext  %}
+                  <tr>
+                    <td><p>#{{ eachcompletedorder.order.id }}</p></td>
+                    <td><p>{{ eachcompletedorder.order.customer }}</p></td>
+                    <!-- <td><p>#{{ eachcompletedorder.order.transaction_id }}</p></td> -->
+                    <td><p class="completionstatus">{{ eachcompletedorder.complete }}</p></td>
+                    <td><p>{{ eachcompletedorder.converted_total_bill|floatformat:0 }} <span class="text-success">{{currency_code }}</span> </p></td>
+                    <td><p>{{ eachcompletedorder.order.totalseatsbooked }}</p></td>
+                    <td>
+                        <a href="{% url 'booked-flight-detail' eachcompletedorder.order.id %}" class="btn btn-outline-success btn-sm">Order Detail</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+    
+                <script>
+                    var completionstatus = document.getElementsByClassName("completionstatus")
+                    // Loop through each element and log its innerHTML
+                    for (var i = 0; i < completionstatus.length; i++) {
+                        console.log(completionstatus[i].innerHTML);
+                        change_completion_status = "Booked"
+                        completionstatus[i].innerHTML = change_completion_status
+                    }
+                </script>
+    
+    
+                </tbody>
+              </table>
+              </div>
+            
+    
+    
+    
+        </div>
+        
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- IF USER IS JUST A NORMAL USER, THEN SHOW ONLY HIS BOOKED FLIGHTS  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    {% else %}
+      <div class="booked-flight-page-1 container-fluid">
+        <div class="booked-flight-page-overlay"></div>
+
+        <div class="booked-flight-page-1-content">
+          <div class="completer-order-container container">
+      
+              
+              <!-- TABLE TO DISPLAY ORDER -->
+                <div class="table-responsive my-tab-table-div">
+                  <table class="table table-striped ">
+                  <thead>
+                    <tr>
+      
+                      <th scope="col">Transaction Id</th>
+                      <!-- <th scope="col">Transaction Number</th> -->
+                      <th scope="col">Status</th>
+                      <th scope="col">Total Bill</th>
+                      <th scope="col">Total Seats Booked</th>
+                      <th scope="col">Action</th>
+      
+                    </tr>
+                  </thead>
+                  <tbody>
+                      
+                  <!-- Loop through each completed order in the dictionary -->
+                  {% for eachcompletedorder in orders_with_converted_billsContext  %}
+                    <tr>
+                      <td><p>#{{ eachcompletedorder.order.id }}</p></td>
+                      <!-- <td><p>#{{ eachcompletedorder.order.transaction_id }}</p></td> -->
+                      <td><p class="completionstatus">{{ eachcompletedorder.complete }}</p></td>
+                      <td><p>{{ eachcompletedorder.converted_total_bill|floatformat:0 }} <span class="text-success">{{currency_code }}</span> </p></td>
+                      <td><p>{{ eachcompletedorder.order.totalseatsbooked }}</p></td>
+                      <td>
+                          <a href="{% url 'booked-flight-detail' eachcompletedorder.order.id %}" class="btn btn-outline-success btn-sm">Order Detail</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+      
+                  <script>
+                      var completionstatus = document.getElementsByClassName("completionstatus")
+                      // Loop through each element and log its innerHTML
+                      for (var i = 0; i < completionstatus.length; i++) {
+                          console.log(completionstatus[i].innerHTML);
+                          change_completion_status = "Booked"
+                          completionstatus[i].innerHTML = change_completion_status
+                      }
+                  </script>
+      
+      
+                  </tbody>
+                </table>
+                </div>
+              
+      
+      
+      
+          </div>
+          
+        </div>
+    </div>
+  {% endif %}
+
+
+{% else %}
+    <!-- Content for guests (unauthenticated users) -->
+    <div>
+        <h2>Welcome, Guest!</h2>
+        <p>Please <a href="{% url 'login' %}">login</a> to access more features.</p>
+        <!-- Add more guest-specific content here -->
+    </div>
+{% endif %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,355 @@
+{% extends 'airline/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<body>
+  <!-- HERO SECTION -->
+  <section class="hero-section container-fluid">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-container">
+        <h4>Find Nice Flight Deals.</h1>
+  
+        <div class="hero-search">
+          <!-- SEARCH AVAILABLE FLIGHTS -->
+          <form action="{% url 'airline' %}" method="get" class="form-search">
+            {% csrf_token %}
+  
+              <div class="input-search-boxes">
+                <!-- INPUT BOXES -->
+                <div class="input-each-box">
+                  <input type="text" name="origin" class="form-control" placeholder="From">
+                  <input type="text" name="destination" class="form-control" placeholder="Going To">
+                </div>
+                <!-- INPUT BOXES -->
+  
+                
+                <!-- INPUT BOXES -->
+                <div class="input-each-box">
+                  <input type="number" name="seats" class="form-control" placeholder="Available Seats">
+                </div>
+                <!-- INPUT BOXES -->
+  
+                
+              </div>
+              
+                <!-- INPUT BOXES -->
+              <div class="input-search-boxes">
+  
+                <div class="input-each-box">
+                  <input type="date" name="date" class="form-control">
+                </div>
+  
+                
+                <div class="input-each-box">
+                  <input type="text" name="flightname" class="form-control" placeholder="Flight Name">
+                </div>
+  
+              </div>
+              <!-- INPUT BOXES -->
+  
+  
+                <!-- HERO SEARCH BUTTON -->
+                <div class="hero-search-btn">
+                  <button class="btn btn-primary hover" type="submit">Find Available Flight</button>
+                 </div>
+                <!-- HERO SEARCH BUTTON -->
+            
+              
+          </form>
+          <!-- SEARCH AVAILABLE FLIGHTS -->
+  
+        </div>
+  
+        
+        <div class="hero-other">
+          <div class="hero-my-booking">
+            <a href="{% url 'user-details' %}"><i class="fa fa-cog fa-spin"></i></i> My Account</a>
+          </div>
+          <hr>
+          <div class="hero-my-profile">
+            <a href="{% url 'booked-flights' %}"><i class="fa fa-plane fa-pulse"></i></i> Booked Flights</a>
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+  </section>
+  <!-- HERO SECTION -->
+  <!-- <div class="container"> -->
+
+
+  <!-- ======= About Section ======= -->
+  <div id="about" class="about-area area-padding">
+    <div class="container">
+      <div class="row my-4">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline text-center">
+            <h2>About Our Travel Flight Project</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- single-well start-->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="well-left">
+            <div class="single-well">
+              <a href="#">
+                <img src="{% static 'images/bgflight2.png' %}" class="img-fluid" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- single-well end-->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="well-middle">
+            <div class="single-well">
+              <a href="#">
+                <h4 class="sec-head">Travel Agency project</h4>
+              </a>
+              <p>
+                We utilise web services to compose a travel agency. The travel agency consists of a flight reservation service 
+                that Customly Built with Django & Integrated With external currency conversion service , Ready To Be
+                consumed and integrate with the reservation service. More value-added functionality Were also Introduced , Which Includes: 
+              </p>
+              <ul>
+                <li>
+                  <i class="bi bi-check"></i> Flight Booking
+                </li>
+                <li>
+                  <i class="bi bi-check"></i> Currency Conversion
+                </li>
+                <li>
+                  <i class="bi bi-check"></i> Map Integration
+                </li>
+                <li>
+                  <i class="bi bi-check"></i> Weather Integration
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- End col-->
+      </div>
+    </div>
+  </div><!-- End About Section -->
+
+
+
+  <!-- BELOW HERO SECTION -->
+  <section class="below-herow-section container">
+    <div class="below-hero row">
+  
+      <div class="below-hero-each-box col-3">
+        <img src="{% static 'images/money-back-v2.png' %}" class="img-fluid" alt="">
+        <div class="below-hero-each-box-contain">
+          <h6>Exclusive Offer</h6>
+          <p>Unlock big savings by booking your flights and hotels together</p>
+        </div>
+      </div>
+  
+      <div class="below-hero-each-box col-3">
+        <img src="{% static 'images/free-shipping.png' %}" class="img-fluid" alt="">
+        <div class="below-hero-each-box-contain">
+          <h6>Flight Booking</h6>
+          <p>Unlock big savings by booking your flights and hotels together</p>
+        </div>
+      </div>
+  
+      <div class="below-hero-each-box col-3">
+        <img src="{% static 'images/safe-payment.png' %}" class="img-fluid" alt="">
+        <div class="below-hero-each-box-contain">
+          <h6>Traveling</h6>
+          <p>Unlock big savings by booking your flights and hotels together</p>
+        </div>
+      </div>
+  
+  
+    </div>
+  </section>
+    <!-- BELOW HERO SECTION ENDS -->
+
+    
+
+  <!-- ======= Suscribe Section ======= -->
+  <div class="suscribe-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+          <div class="suscribe-text text-center">
+            <h3>View Our Available Flights</h3>
+            <a class="sus-btn btn btn-primary mt-2" href="{% url 'airline' %}">Book Flight</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Suscribe Section -->
+
+  <!-- ======= rev Section ======= -->
+  <div class="container-fluid rev-section">
+    <div class="row">
+
+      <div class="inner-div inner-div-1 col-lg-6 col-sm-12">
+      </div>
+      <div class="inner-div col-lg-6 col-sm-12">
+        <div class="inner-div-overlay"></div>
+        <div class="inner-div-container">
+          <h4>More Features</h4>
+          <strong>REST Web service that implements a search functionality allowing customers to find suitable flights using various criteria </strong>
+          <a href="" class="btn-btn-primary">Contact Us</a>
+        </div>
+
+      </div>
+
+    </div>
+    
+  </div>
+  <!-- End rev Section -->
+
+
+  <!-- ======= Blog Section ======= -->
+  <div id="blog" class="blog-area">
+    <div class="blog-inner area-padding">
+      <div class="blog-overly"></div>
+      <div class="container ">
+        <div class="row mb-5">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>Latest News</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Start Left Blog -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="">
+                  <img src="{% static 'images/bgflight3.jpg' %}" class="img-fluid" alt="">
+                </a>
+              </div>
+              <div class="blog-meta">
+                <span class="comments-type">
+                  <i class="fa fa-comment-o"></i>
+                  <a href="">13 comments</a>
+                </span>
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
+                </span>
+              </div>
+              <div class="blog-text">
+                <h4>
+                  <a href="">Assumenda repud eum veniam</a>
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                </p>
+              </div>
+              <span>
+                <a href="" class="ready-btn">Read more</a>
+              </span>
+            </div>
+            <!-- Start single blog -->
+          </div>
+          <!-- End Left Blog-->
+          <!-- Start Left Blog -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="">
+                  <img src="{% static 'images/bgflight2.png' %}" class="img-fluid"alt="">
+                </a>
+              </div>
+              <div class="blog-meta">
+                <span class="comments-type">
+                  <i class="fa fa-comment-o"></i>
+                  <a href="#">130 comments</a>
+                </span>
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
+                </span>
+              </div>
+              <div class="blog-text">
+                <h4>
+                  <a href="">Explicabo magnam quibusdam.</a>
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                </p>
+              </div>
+              <span>
+                <a href="" class="ready-btn">Read more</a>
+              </span>
+            </div>
+            <!-- Start single blog -->
+          </div>
+          <!-- End Left Blog-->
+          <!-- Start Right Blog-->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="">
+                  <img src="{% static 'images/bgflight4.jpg' %}" class="img-fluid" alt="">
+                </a>
+              </div>
+              <div class="blog-meta">
+                <span class="comments-type">
+                  <i class="fa fa-comment-o"></i>
+                  <a href="#">10 comments</a>
+                </span>
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
+                </span>
+              </div>
+              <div class="blog-text">
+                <h4>
+                  <a href="">Lorem ipsum dolor sit amet</a>
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                </p>
+              </div>
+              <span>
+                <a href="" class="ready-btn">Read more</a>
+              </span>
+            </div>
+          </div>
+          <!-- End Right Blog-->
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Section -->
+
+
+  <!-- ------------------------ FLIGHT IMPORT -->
+  <section class="subscribe container-fluid mt-5">
+    <div class="section__container subscribe__container">
+      <h2 class="section__header">Subscribe newsletter & get latest news</h2>
+      <form class="subscribe__form">
+        <input type="text" placeholder="Enter your email here" />
+        <button class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+  <!-- ------------------------ FLIGHT IMPORT -->
+  
+    
+</body>
+    
+
+{% endblock %}

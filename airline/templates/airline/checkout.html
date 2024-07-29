@@ -1,0 +1,150 @@
+{% extends 'airline/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+
+
+
+
+
+
+{% block content %}
+<!-- HERO SECTION -->
+<section class="other-pages-hero-section container-fluid">
+  <div class="other-pages-hero-overlay"></div>
+  <div class="other-pages-hero-container container">
+
+    <div class="other-pages-hero-box">
+        <h4>Finalize Booking.</h1>
+        <p>View Order Details & Checkout</p>
+
+    </div>
+    
+  </div>
+</section>
+<!-- HERO SECTION -->
+
+
+
+<div class="container my-5">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="box-element" id="form-wrapper">
+                <div id="form" method="get">
+                    <!-- user info form checkout -->
+                    <div id="user-info">
+                        <div class="form-field">
+                            <input required class="form-control" type="text" value="{{customerContext.name}}" readonly name="name" placeholder="Name..">
+                        </div>
+                        <div class="form-field">
+                            <input required class="form-control" value="{{customerContext.email}}" readonly type="email" name="email" placeholder="Email..">
+                        </div>
+                            <!-- {% csrf_token %}
+                            {{ checkoutform|crispy }} -->
+                    </div>
+                    
+                    <!-- shipping info form checkout -->
+                    <div id="shipping-info">
+                        <hr>
+                        <p>Personal Information:</p>
+                        <hr>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="address" placeholder="Address.." value="{{customerContext.address}}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="city" placeholder="City.." value="{{customerContext.country}}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="state" placeholder="State.." value="{{customerContext.state}}" readonly>
+                        </div>
+                        <div class="form-field">
+                            <input class="form-control" type="text" name="phone" placeholder="Phone Number.." value="{{customerContext.phone}}" readonly>
+                        </div>
+                    </div>
+                    <hr>
+                    <a href="{% url 'user-details' %}" id="form-button" class="btn btn-success btn-block"> Update Personal Information </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<!-- -----------------------------------------PAYMENT  -->
+
+
+        <div class="col-lg-6">
+            <div class="box-element">
+                <a  class="btn btn-outline-dark" href="{% url 'book-airline' %}">&#x2190; Bookings</a>
+                <!-- checkout btn -->
+                <a data-product="{{ordercontext.id}}" data-action="checkout" class="btn btn-outline-success book-flight-btn" >Book Flight</a>
+                <!-- checkout btn -->
+                <hr>
+                <h7><strong>Order Summary</strong></h3>
+                <hr>
+
+                <div class="cart-row">
+                    <div style="flex:2"><p>Image</p></div>
+                    <div style="flex:2"><p>Airline</p></div>
+                    <div style="flex:1"><p>Total ({{ currency_code }})</p></div>
+                    <div style="flex:1"><p>Seats</p></div>
+                </div>
+
+                {% for eachcheckoutitem in checkoutitems %}
+                
+                <div class="cart-row">
+                    <div style="flex:2"><img class="row-image" src="{{eachcheckoutitem.airline.imageUrl}}"></div>
+                    <div style="flex:2"><p>{{eachcheckoutitem.airline.name}}</p></div>
+                    <div style="flex:1"><p> {{ eachcheckoutitem.total_converted_price }} </p></div>
+                    <div style="flex:1"><p> {{eachcheckoutitem.Seats_used}}</p></div>
+                </div>
+                {% endfor %}
+
+
+                <h7>Seats:   {{cartIconShowQuantity}}</h7>
+                <h6> <strong>Total Flight Bill:</strong>  {{total_converted_order_cost | floatformat:0}} {{ currency_code }}</h6>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        
+
+        <br>
+        <div class="box-element hidden" id="payment-info">
+            <small>Paypal Options</small>
+        </div>
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}

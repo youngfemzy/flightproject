@@ -1,0 +1,81 @@
+{% extends 'airline/base.html' %}
+{% load static %}
+
+
+
+
+
+
+
+
+{% block content %}
+<!-- HERO SECTION -->
+<section class="other-pages-hero-section container-fluid">
+  <div class="other-pages-hero-overlay"></div>
+  <div class="other-pages-hero-container container">
+
+    <div class="other-pages-hero-box">
+        <h4>Transaction Details : #{{ ordercontext.id }}.</h1>
+
+    </div>
+
+  </div>
+</section>
+<!-- HERO SECTION -->
+
+        <div class="mt-5 container">
+
+            <!-- Display the order ID -->
+            
+                <!-- Loop through each item in the current order -->
+                {% for eachorderitem in orderitemcontext %}
+                    <!-- Display the airline name and quantity for each item -->                 
+
+                    <div class="product-card">
+
+                        <div class="product-card-image">
+                            <img src="{{eachorderitem.airline.imageUrl}}" alt="">
+                        </div>
+        
+                        <div class="product-card-info">
+        
+                            <div class="product-card-top">
+                                <h6><strong>{{eachorderitem.airline.name}}</strong></h6>
+                                <h6><strong>{{eachorderitem.airline.takeoff_date}}</strong></h6>
+                                <h6><strong>Flight Ticket Price : <span class="text-success">{{converted_price|floatformat:1}} {{ currency_code }}</span></strong></h6>
+                            </div>
+                            <hr>
+        
+                            <div class="product-card-details">
+        
+                                <div class="product-card-destination">
+                                    <h6><strong>Origin:</strong> {{eachorderitem.airline.origin_city}} </h6>
+                                    <h6><strong>Destination:</strong> {{eachorderitem.airline.destination_city}}</h6>
+                                    <h6><strong>Origin:</strong> {{eachorderitem.airline.origin_city}} </h6>
+                                </div>
+        
+                                
+                                <div class="product-card-buttons">
+                                    <h6><strong>Seats Booked:</strong> {{eachorderitem.quantity}}</h6>
+                                    <a href="{% url 'view-airline-details' eachorderitem.airline.id %}" class="btn btn-outline-success btn-sm">View Airline Detail</a>
+
+
+
+                                </div>
+        
+        
+                            </div>
+        
+                        </div>
+                    </div>
+
+
+
+                {% endfor %}
+
+        </div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,24 @@
+{% extends 'airline/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="container user-form-container">
+<form action="" method="post" class="form-group">
+    {% csrf_token %}
+    <h5>Login</h5>
+
+
+    {{ loginformContext|crispy }}
+
+    <p class="mt-3">dont have an account ? <a href="../register">Register</a></p>
+    <button type="submit" class="btn btn-success">Submit</button>
+
+
+
+
+</form>
+</div>
+
+{% endblock %}
