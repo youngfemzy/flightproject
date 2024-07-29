@@ -1,0 +1,763 @@
+*{
+	padding: 0;
+	scroll-behavior: smooth;
+	margin: 0
+}
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.currency-selector-box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 70px;
+	background: transparent;
+	top : 50px;
+	right: 10px;
+	z-index: 30;
+}
+.currency-selector-box select{
+	padding: 10px 3px;
+	border-radius: 50%;
+	font-size: 12px;
+	color: #fff;
+	background-color: darkblue;
+}
+
+@media screen and (max-width: 1024px){
+
+	.currency-selector-box{
+		top : 7px;
+		right: 30px;
+		z-index: 30;
+	}
+}
+
+
+@media screen and (max-width: 616px){
+
+	.currency-selector-box{
+		top :2px;
+		right: 10px;
+		z-index: 30;
+	}
+}
+
+
+
+
+/* navbar section */
+#cart-icon{
+    width: 30px;
+}
+
+
+#navbarSupportedContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cartnav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#mainnavbar{
+	/* margin-bottom: 20px; */
+	position: absolute!important;
+	top: 10px;
+	width: 90%;
+	z-index: 4;
+}
+.navbar .container{
+	box-shadow: 1px 2px 4px rgb(227, 226, 226)!important;
+}
+.navbar-scroll{
+	background-color: darkblue;
+	
+}
+@media screen and (max-width: 981px){
+
+	.navbar-scroll, .navbar-nav, #navbarScroll{
+		background-color: darkblue!important;
+		margin-top: 40px!important;
+		
+	}
+	#navbarScroll{
+		border-radius: 10px;
+	}
+	#navbarScroll a{
+		color: #fff!important;
+	}
+}
+/* navbar section */
+
+
+
+/* ---------------------------------------- LOGIN , REGISTER , DASHBOARD */
+.user-form-container{
+	margin-top: 150PX;
+	padding: 60px 20px;
+	border-radius: 10px;
+	width: 60%;
+	background-color: #fff;
+	box-shadow: 1px 1px 10px rgb(202, 202, 202);
+}
+.user-form-container input{
+	margin-top: 10px;
+}
+
+@media screen and (max-width: 580px){
+	.user-form-container{
+		/* width: 450px; */
+		width: 80%;
+	}
+}
+/* ---------------------------------------- LOGIN , REGISTER , DASHBOARD ENDS */
+
+
+/* USER DETAILS PAGE STYLE */
+.all-user-detail-container{
+	margin-top: 140px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.two-user-details-boxes-1{
+	background-color: white;
+	width: 60%;
+	padding: 30px;
+}
+.two-user-details-boxes-2{
+	background-color: white;
+	width: 38%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 400px;
+	padding: 20px;
+
+}
+
+.inner-user-detail-box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: rgb(240, 240, 240);
+	padding: 30px;
+	width: 100%;
+	margin: 10px 0;
+	height: 180px;
+}
+
+
+@media screen and (max-width: 761px){
+	.all-user-detail-container{
+		flex-direction: column;
+	}
+
+	.two-user-details-boxes-1{
+		width: 90%;
+	}
+	.two-user-details-boxes-1 input{
+		font-size: 13px;
+	}
+	.two-user-details-boxes-1 label{
+		margin-top: 100px 0!important;
+	}
+	.two-user-details-boxes-2{
+		margin-top: 15px;
+		width: 90%;
+	
+	}
+
+}
+/* USER DETAILS PAGE STYLE ENDS */
+
+
+
+
+
+
+
+
+
+/* HERO SECTION  */
+.hero-section{
+	background-image: url(../images/bgflight.PNG);
+	height: 600px!important;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.hero-overlay{
+	background:linear-gradient(0,rgba(50, 101, 255, 0.244) 0%,rgba(50, 101, 255, 0.408) 100%);
+	position: absolute; 
+	/* width: 100%; */
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+}
+.hero-container{
+	width: 100%;
+	z-index: 3;
+	margin-top: 140px;
+	position: relative;
+}
+.hero-container h4{
+	color: #fff;
+}
+.hero-search{
+	height: 250px;
+	background-color: white;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+.hero-other{
+	height: 70px;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.hero-my-booking{
+	width: 50%;
+}
+
+.form-search{
+	padding: 40px;
+}
+
+.input-search-boxes{
+	display: flex;
+	justify-content: space-between;
+	margin: 10px 0;
+}
+.input-each-box{
+	display: flex;
+	width: 50%;
+}
+.input-each-box-2{
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+
+}
+.input-each-box input{
+	margin: 0 5px;
+	padding: 20px;
+}
+.input-each-box-2 input{
+	margin: 0 15px;
+	padding: 10px;
+}
+.hero-search-btn{
+	display: flex;
+	justify-content: flex-end;
+}
+.hero-search-btn button{
+	border-radius: 10px;
+	font-size: 12px;
+}
+
+
+
+
+
+@media screen and (max-width: 700px){
+	.hero-container h4{
+		font-size: 14px;
+	}
+			
+	.hero-search{
+		height: 240px;
+	}
+
+	.form-search{
+		padding: 17px;
+	}
+
+		
+	.input-each-box input{
+		margin: 0 5px;
+		padding: 20px;
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 580px){
+			
+	.hero-search{
+		height: 170px;
+	}
+
+	.form-search{
+		padding: 10px;
+	}
+
+		
+	.input-each-box input{
+		margin: 0 5px;
+		padding: 10px;
+		font-size: 10px;
+	}
+}
+/* HERO SECTION ENDS */
+
+
+
+/* OTHER PAGES HERO SECTION */
+
+.other-pages-hero-section{
+	background-image: url(../images/bgflight2.PNG);
+	height: 320px!important;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	display: flex;
+	justify-content: start;
+	align-items: center;	
+	
+}
+
+.other-pages-hero-container{
+}
+.other-pages-hero-box{
+	position: relative;
+	background-color: hsla(0, 0%, 7%, 0.309);
+	z-index: 2!important;
+	width: 40%;
+	height: 120px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	margin-top: 100px;
+	flex-direction: column;
+}
+.other-pages-hero-box h4{
+	color: #fff;
+}
+.other-pages-hero-box p{
+	color: #fff;
+	font-size: 12px;
+
+}
+
+.other-pages-hero-overlay{
+	background:linear-gradient(0,rgba(78, 3, 119, 0.568) 0%,rgba(8, 35, 115, 0.749) 100%);
+	position: absolute; 
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+}
+/* OTHER PAGES HERO SECTION */
+
+
+/* BELOW HERO SECTION */
+.below-herow-section{
+	background-color: white;
+	border-radius: 20px;
+	margin: 20px;
+	z-index: 3;
+	height: 300px;
+	display: flex;
+	align-items: center;
+}
+.below-hero{
+	/* height: 100px; */
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.below-hero img{
+	width:  40px;
+	height: 40px;
+}
+.below-hero-each-box{
+	display: flex;
+	border: 1px solid rgb(131, 131, 131);
+	margin: 10px;
+	padding: 10px;
+	border-radius: 10px;
+
+}
+.below-hero-each-box-contain{
+	margin: 0 10px;
+	
+}
+.below-hero-each-box-contain p{
+	font-size: 12px;
+}
+
+
+@media screen and (max-width: 580px){
+	.below-hero-each-box{
+		display: flex;
+		flex-direction: column;
+		padding: 3px;
+	
+	}
+			
+	.below-hero img{
+		width:  20px;
+		height: 20px;
+	}
+	.below-hero-each-box-contain h6{
+		font-size: 12px;
+	}
+	.below-hero-each-box-contain p{
+		font-size: 10px;
+	}
+}
+
+/* BELOW HERO SECTIONENDS */
+
+
+
+
+
+
+/* CARDSS SECTION DESIGNS */
+.cards-section{
+	margin: 50px 0;
+}
+.cards-section-row{
+	display: flex;
+	margin: 0 1px;
+	justify-content: center;
+}
+.card{
+	margin: 0 4px;
+}
+.card-body-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.card-special{
+	width: 30%;
+}
+.card-special h6{
+	font-size: 16px;
+}
+.card-special p{
+	font-size: 12px;
+}
+/* CARDSS SECTION DESIGNSENDS */
+
+
+
+
+
+
+/* AIRLINE PAGE STYLE */
+.airline-hero-search{
+	background-color: #fff;
+	padding: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+.airline-hero-search form input, .airline-hero-search form select{
+	width: 260px;
+	padding: 13px;
+}
+
+.airline-hero-form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+@media screen and (max-width: 985px){
+
+	.airline-hero-search form input, .airline-hero-search form select{
+		width: 160px;
+		padding: 13px;
+	}
+}
+
+/* @media screen and (max-width: 500px){
+
+	.airline-hero-search form input, .airline-hero-search form select{
+		width: 140px!important;
+		padding: 10px;
+	}
+} */
+
+
+
+@media screen and (max-width: 950px){
+	.hero2.hero-section{
+		height: 800px!important;
+	}
+	.airline-hero-search .form-group{
+		width: 40%!important;
+	}
+
+}
+.product-card{
+	margin: 10px 0;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 40px 20px;
+	border-radius: 10px;
+	box-shadow: 1px 2px 4px rgb(205, 204, 204);
+}
+.product-card-image{
+	width: 30%;
+}
+.product-card-image img{
+	width: 50%;
+}
+.product-card-info{
+	width: 70%;
+}
+
+.product-card-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.product-card-details{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+@media screen and (max-width: 800px){
+
+	.product-card-image{
+		width: 15%;
+	}
+	.product-card-info{
+		width: 60%;
+	}
+}
+
+@media screen and (max-width: 770px){
+	
+	.navbar-nav{
+		background-color: #fff;
+		font-size: 13px;
+		padding: 20px;
+	}
+	#navbarScroll{
+		background-color: #fff;
+		margin-top: 40px;
+	}
+	#navbarScroll form a{
+		font-size: 13px;
+		display: inline-block;
+	}
+
+	.product-card-image{
+		width: 40%;
+	}
+	.product-card-image img{
+		width: 80%;
+	}
+	.product-card-info{
+		width: 50%;
+	}
+
+	.product-card-destination h6{
+		font-size: 13px;
+	}
+	.product-card-buttons a{
+		font-size: 12px!important;
+		margin: 4px 0;
+	}
+}
+
+@media screen and (max-width: 700px){
+		
+	.product-card{
+		flex-direction: column;
+		border-radius: 4px;
+		padding: 20px;
+	}
+
+
+	.product-card-image{
+		width: 70%;
+	}
+	.product-card-info{
+		width: 100%;
+		margin: 7px 0;
+	}
+	.product-card-top h6{
+		font-size: 13px;
+	}
+	.product-card-destination h6{
+		font-size: 12px;
+	}
+	.product-card-buttons{
+		display: flex;
+	}
+	.product-card-buttons a{
+		font-size: 11px!important;
+		margin: 4px 2px;
+	}
+}
+
+
+@media screen and (max-width: 520px){
+
+	.product-card-top {
+		align-items: start!important;
+		flex-direction: column!important;
+	}
+}
+/* AIRLINE PAGE STYLE ENDS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* VIEW AIRLINE PAGE STYLE */
+
+
+.all-airline-view-container{
+	margin-top: 180px;
+	text-transform: capitalize;
+}
+.view-airline-image{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid rgb(243, 243, 243);
+	border-radius: 10px;
+}
+.view-airline-image img{
+	max-height: 300px;
+	padding: 20px;
+}
+.view-airline-image{
+	margin-bottom: 40px;
+}
+
+.view-airline-details{
+	margin-bottom: 40px;
+}
+
+.airline-more-details{
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+}
+
+
+.other-airline-details{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 40px 0;
+}
+/* VIEW AIRLINE PAGE STYLE ENDS */
+
+
+
+
+
+
+
+
+
+
+
+
+/* VIEW COMPLETED ORDER PAGE */
+
+.completer-order-container {
+	margin-top: 200px;
+	background-color: #fff;
+	border-radius: 10px;
+}
+/* VIEW COMPLETED ORDER PAGE */
+
+
+
+
+/* general hero section */
+
+.booked-flight-page-1{
+	min-height: 600px;
+	background-image: url('../images/next.png');
+	background-position: bottom;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-bottom: 40px;
+}
+.booked-flight-page-overlay{
+	position: absolute;
+	background-color: rgb(15, 3, 83);
+	opacity: .7;
+	height: 100%;
+	left: 0;
+	right: 0;
+	z-index: 0;
+	/* width: 100%;  */
+}
+.my-tab-table-div{
+	padding: 20px;
+}
+.booked-flight-page-1-content{
+	z-index: 2!important;
+	position: relative;
+
+}
+/* general hero section */
+
+
+
